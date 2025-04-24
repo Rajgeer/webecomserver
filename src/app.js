@@ -5,7 +5,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const credentials = require('./middlewares/credential');
-const {corsOptions} = require('./config/corsOptions');
+const corsOptions = require('./config/corsOptions');
 
 // Load env vars
 dotenv.config();
@@ -13,7 +13,7 @@ dotenv.config();
 // Route files
 const authRoutes = require('./routes/authRoutes');
 const productRoutes = require('./routes/productRoutes');
-// const orderRoutes = require('./routes/orderRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 // const userRoutes = require('./routes/userRoutes');
 
 
@@ -26,7 +26,7 @@ app.use(cors(corsOptions));
 // Mount routers
 app.use('/api/auth', authRoutes);
 app.use('/api/products', productRoutes);
-// app.use('/api/orders', orderRoutes);
+app.use('/api/orders', orderRoutes);
 // app.use('/api/users', userRoutes);
 
 app.use('/static', express.static(path.join('/public')));
